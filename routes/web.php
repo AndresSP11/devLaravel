@@ -30,4 +30,10 @@ Route::post('/login',[LoginController::class,'store']);
 
 Route::post('/logout',[LogoutController::class,'store'])->name('logout');
 
-Route::get('/muro',[PostController::class,'index'])->name('posts.index');
+
+/* Para que pase a la parte de /muro tener en cuenta que va pasar por el metodo get que es el constructor, osea el index */
+/* Dentro de las llaves van objetos en base al Modelo planteado en los Modelos anteriores. */
+/* En este caso recordar a la funciòn que apunta desde el controlador estarà esperando una forma de que 
+se le pase el modelo a la funciòn determinada */
+Route::get('/{user:username}',[PostController::class,'index'])->name('posts.index');
+Route::get('/posts/create',[PostController::class,'create'])->name('posts.create');
