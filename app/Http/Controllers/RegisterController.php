@@ -18,7 +18,8 @@ class RegisterController extends Controller
     /* Para el metodo POST */
     public function store(Request $request)
     {
-        /* Las validaciones y errores lo tiene almacenado ahí, solo va seguri el flujo */
+        /* Las validaciones y errores lo tiene almacenado ahí, solo va seguri el flujo, validaciones para 
+        el usuario en la parte del form Register */
         $this->validate($request,[
             'name'=>'required|max:30',
             'username'=>'required|unique:users|min:3|max:20',
@@ -49,6 +50,8 @@ class RegisterController extends Controller
 
         auth()->attempt($request->only('email','password'));
 
+        /* El post que se esta mandando es parte de la variable de registro, porque debido  
+        ello hay veces que no lo reconoce */
         return redirect()->route('posts.index',['user'=>auth()->user()->username]);
     
     }

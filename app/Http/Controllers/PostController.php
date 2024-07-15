@@ -23,9 +23,7 @@ class PostController extends Controller
         Recordar tambien qeu primero  va pasr por el constructor del middleware, luego al momento de colocar view layout fasborad, es por la funciòn
         es por ello que para que muestre la parte del get se tien que tener en cuenta esto */
 
-        /* Pasando las varaibles de sesión iniciada en la parte del Muro */
-
-
+        /* Pasando las varaibles de sesión iniciada en la parte del Muro de la */
         return view('layouts.dashboard',[
             'user'=>$user
         ] );
@@ -36,8 +34,6 @@ class PostController extends Controller
 
     public function create()
     {
-
-        
         return view('posts.create');
     }
 }
