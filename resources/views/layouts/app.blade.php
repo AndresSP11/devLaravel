@@ -36,6 +36,8 @@
                     <a href="{{route('login')}}" class=" font-bold text-gray-600 hover:text-indigo-600 text-sm items-center">
                     Hola: <span class=" font-normal">{{ auth()->user()->username }}</span>
                     </a>
+                    {{-- Se ha creado una parte de un formulario en la parte de post, y luego el ruteo necesario, el button submit indica para 
+                    llevarlo --}}
                 <form method="POST" action="{{route('logout')}}">
                     @csrf
                     <button type="submit" class="font-bold uppercase">

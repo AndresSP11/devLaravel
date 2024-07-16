@@ -24,7 +24,7 @@ class PostController extends Controller
         es por ello que para que muestre la parte del get se tien que tener en cuenta esto */
 
         /* Pasando las varaibles de sesión iniciada en la parte del Muro de la */
-        return view('layouts.dashboard',[
+        return view('dashboard',[
             'user'=>$user
         ] );
         /* dd(auth()->user()); */
