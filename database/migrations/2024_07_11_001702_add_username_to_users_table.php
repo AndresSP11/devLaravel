@@ -27,7 +27,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            ///* Aqui elimina la parte de la Columna */
             $table->dropColumn('username');
         });
     }

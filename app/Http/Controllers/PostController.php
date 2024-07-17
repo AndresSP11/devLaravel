@@ -12,6 +12,7 @@ class PostController extends Controller
         /* En este caso por defecto si no encuentra la validadicòn de inico de sesion
         el middleware lo detecta, pero si pasa pasa a la siguiente funciòn */
         /* Validar la autenticación, para ver si existe o no */
+        /* Validación del middleware que permite la autenticación del usuario. */
         $this->middleware('auth');
     }
     
@@ -31,9 +32,22 @@ class PostController extends Controller
         /* return view('auth.register'); */
 
     }
-
+    
     public function create()
     {
+        /* Es quien nos retorna para poder tener la vista del formulario en esta ocasión */
         return view('posts.create');
     }
+
+    /* Esta es para hacer la validaciónd delos posts necesarios, para luego mandarlo a la clase del controlador */
+    public function store(Request $request)
+    {
+        /* Creando la publicación del estado , RECORAR QUE PARA VALIDACIÓN TENEMOS QUE HACERLE EN UN REGISTRO O LOGIN*/
+        $this->validate($request,[
+            'titulo'=>'required|max:255',
+            'descripcion'=>'required',
+            'imagen'=>'required'
+        ]);
+    }
+
 }
