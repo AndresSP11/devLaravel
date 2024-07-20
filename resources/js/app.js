@@ -25,7 +25,7 @@ const dropzone= new Dropzone('#dropzone',{
 
 dropzone.on("success",function(file,response){
     console.log(response.imagen);
-    /* Agregar un valor al punto value del documentqueryselector */
+    /* Agregar un valor al punto value del documentqueryselector, ESTE ES PARA Agregar valor al input invisible*/
     document.querySelector('[name="imagen"]').value=response.imagen;
 
 });

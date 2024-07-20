@@ -43,4 +43,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /* Definiendo la funciòn para ver la relaciòn */
+    public function posts(){
+        /* Has Many es de 1:M En la relacion de uno am ucho */
+        /* En caso cuando no lo detecte se tiene uqe identificar en parte de las migraciones definidas  */
+        return $this->hasMany(Post::class);
+
+        
+    }
 }

@@ -12,6 +12,7 @@ use Intervention\Image\Drivers\Gd\Driver;
 
 class ImagenController extends Controller
 {
+    /* El procedimiento para mandar la imagen */
     /* Cuando se sube la parte de Usuario se queda almacenado aqui */
     public function store(Request $request)
     {

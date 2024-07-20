@@ -37,7 +37,9 @@ Route::post('/logout',[LogoutController::class,'store'])->name('logout');
 /* En este caso recordar a la funciòn que apunta desde el controlador estarà esperando una forma de que 
 se le pase el modelo a la funciòn determinada */
 Route::get('/{user:username}',[PostController::class,'index'])->name('posts.index');
+
 Route::get('/posts/create',[PostController::class,'create'])->name('posts.create');
+
 Route::post('/posts',[PostController::class,'store'])->name('posts.store');
 
 
