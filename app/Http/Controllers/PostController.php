@@ -20,14 +20,20 @@ class PostController extends Controller
     /* Router build moding */
     public function index(User $user)
     {
-       
+        
         /* Aqui te enviará al muro si es que pasa primero la parte de validación del $this middleware
         Recordar tambien qeu primero  va pasr por el constructor del middleware, luego al momento de colocar view layout fasborad, es por la funciòn
         es por ello que para que muestre la parte del get se tien que tener en cuenta esto */
 
+        /* Haciendo uso de la palabra clave Where en la parte de la Interfaz */
+
+        $posts=Post::where('user_id',$user->id)->paginate(20);
+
         /* Pasando las varaibles de sesión iniciada en la parte del Muro de la */
+        /* Recordar que esto es para pasar la vista hacia los Usuarios correspondientes */
         return view('dashboard',[
-            'user'=>$user
+            'user'=>$user,
+            'posts'=>$posts
         ] );
         /* dd(auth()->user()); */
         /* return view('auth.register'); */
@@ -51,18 +57,34 @@ class PostController extends Controller
         ]);
         /* En la parte del modelo, sirve para 
         la creación que nos brinda o tenemos esto */
-        Post::create([
+        //Post::create([
+            //'titulo'=>$request->titulo,
+            //'descripcion'=>$request->descripcion,
+            //'imagen'=>$request->imagen,
+            /* Esta es la forma que ya se encuentra identificada, es como la variable 
+            global SESSION */
+            //'user_id'=>auth()->user()->id
+        //]);
+
+        $request->user()->posts()->create([
             'titulo'=>$request->titulo,
             'descripcion'=>$request->descripcion,
             'imagen'=>$request->imagen,
-            /* Esta es la forma que ya se encuentra identificada */
             'user_id'=>auth()->user()->id
         ]);
-
+        
         return redirect()->route('posts.index',auth()->user()->username);
 
 
 
+    }
+
+    public function show(User $user,Post $post)
+    {
+        return view('posts.show',[
+            'post'=>$post,
+            'user'=>$user
+        ]);
     }
 
 }
