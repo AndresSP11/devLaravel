@@ -8,13 +8,16 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    /* Antes de que pase a cualquiera pasara por el middleware */
     public function __construct()
     {
         /* En este caso por defecto si no encuentra la validadicòn de inico de sesion
         el middleware lo detecta, pero si pasa pasa a la siguiente funciòn */
         /* Validar la autenticación, para ver si existe o no */
         /* Validación del middleware que permite la autenticación del usuario. */
-        $this->middleware('auth');
+
+        /* La palabra except es para mostrar algunso sin necesidad de tener el middlewaare */
+        $this->middleware('auth')->except(['show','index']);
     }
     
     /* Router build moding */
@@ -65,20 +68,20 @@ class PostController extends Controller
             global SESSION */
             //'user_id'=>auth()->user()->id
         //]);
-
+        /* Haciendo uso de la parte de la funcion de uno a muchos, tambien se puede hacer el de arriba pero en este caso se ta haciendo uso de la otr funcion */
         $request->user()->posts()->create([
             'titulo'=>$request->titulo,
             'descripcion'=>$request->descripcion,
             'imagen'=>$request->imagen,
             'user_id'=>auth()->user()->id
         ]);
-        
+        /* AQUI SE ESTA HACIENDO LA PARTE DEL RUTEO PERO MANDANDO LA AUTORIZACIÓN DEL USER */
         return redirect()->route('posts.index',auth()->user()->username);
 
 
 
     }
-
+/* Mandando las variables a la parte de la vista */
     public function show(User $user,Post $post)
     {
         return view('posts.show',[

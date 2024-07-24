@@ -55,7 +55,6 @@
                     @error('descripcion')
                         <p class=" text-white bg-red-500 text-center mt-2 p-1 font-bold rounded-lg ">{{$message}}</p>
                     @enderror
-
                 </div>
                 {{-- AQUI ESTA EL INPUT --}}
                 <div class=" mb-5">

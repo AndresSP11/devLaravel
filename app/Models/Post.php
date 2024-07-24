@@ -19,6 +19,7 @@ class Post extends Model
 
     public function user()
     {
+        /* La llave solo identifica que es lo que se le pasará a la parte de vista o que es lo que solo quiero obtener aqui */
         return $this->belongsTo(User::class)->select(['name','username']);
     }
 
