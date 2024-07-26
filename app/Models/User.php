@@ -47,9 +47,11 @@ class User extends Authenticatable
     /* Definiendo la funciòn para ver la relaciòn */
     public function posts(){
         /* Has Many es de 1:M En la relacion de uno a mucho */
+        /* 1:M */
         /* En caso cuando no lo detecte se tiene uqe identificar en parte de las migraciones definidas  */
-        return $this->hasMany(Post::class); /* autor_id, para que tenga referencia de lo que se va a realizar allí */
-
-        
+        return $this->hasMany(Post::class); /* autor_id, para que tenga referencia de lo que se va a realizar allí */    
     }
+
+
+
 }

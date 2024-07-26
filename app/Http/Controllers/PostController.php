@@ -82,12 +82,18 @@ class PostController extends Controller
 
     }
 /* Mandando las variables a la parte de la vista */
+
     public function show(User $user,Post $post)
     {
         return view('posts.show',[
             'post'=>$post,
             'user'=>$user
         ]);
+    }
+
+    public function destroy(Post $post)
+    {   
+        dd('Eliminando',$post->id);
     }
 
 }
