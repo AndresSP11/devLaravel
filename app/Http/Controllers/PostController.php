@@ -56,7 +56,7 @@ class PostController extends Controller
         $this->validate($request,[
             'titulo'=>'required|max:255',
             'descripcion'=>'required',
-            'imagen'=>'required'
+            /* 'imagen'=>'required' */
         ]);
         /* En la parte del modelo, sirve para 
         la creación que nos brinda o tenemos esto */
@@ -90,10 +90,22 @@ class PostController extends Controller
             'user'=>$user
         ]);
     }
+    
 
+    /*  */
     public function destroy(Post $post)
     {   
-        dd('Eliminando',$post->id);
+        /* if($post->user_id===auth()->user()->id){
+            
+        } */
+       
+       $this->authorize('delete',$post);
+
+        $post->delete();
+        /* Mandando la parte del usuario */
+        return redirect()->route('posts.index',auth()->user()->username); 
     }
+
+
 
 }

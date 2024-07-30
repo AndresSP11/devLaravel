@@ -19,7 +19,7 @@ class ImagenController extends Controller
         /* La nueva forma de utilización de la base de datos en base a los Usuarios */
 
         $manager = new ImageManager(new Driver());
-
+        
         $imagen= $request->file('file');
         /* Id bien definido para cada imagen */
         $nombreImagen=Str::uuid().".".$imagen->extension();

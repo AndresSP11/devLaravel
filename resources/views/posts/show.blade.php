@@ -23,17 +23,24 @@
                     {{$post->descripcion}}
                 </p>
             </div>
-
+            {{-- En esta parte primero verificamos si esta autenticado o se ha logeado para poder hacer dicha 
+            eliminaciòn de valores --}}
             @auth
-                @if($post->user_id===auth()->user()->id())
-                <form action="">
-                    <input 
-                    type="submit"
-                    value="Eliminar Publicaciòn"
-                    class=" bg-red-500 hover:bg-red-600 p-2 rounded text-white font-bold
-                    mt-4 cursor-pointer"
-                    >
-                </form>
+                {{--Ya en este caso se va evaluar la parte del $post->user_id para ver que si la persona que posteo esto, es la persona que esta logeada con el mismo id, 
+                si etas 2 coicnciden no habrà ningùn problema entonces  --}}
+                {{-- @if($post->user_id==auth()->user()->id) --}}
+                {{-- Aqui es la parte de la $post,  --}}
+                    <form method="POST" action="{{route('posts.destroy',$post)}}">
+                        @method('DELETE');
+                        @csrf
+                        <input 
+                        type="submit"
+                        value="Eliminar Publicaciòn"
+                        class=" bg-red-500 hover:bg-red-600 p-2 rounded text-white font-bold
+                        mt-4 cursor-pointer"
+                        >
+                    </form>
+               {{--  @endif --}}
             @endauth
             
 

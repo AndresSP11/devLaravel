@@ -29,7 +29,5 @@ class LoginController extends Controller
             /* Se va al muro */
             return redirect()->route('posts.index',['user'=>auth()->user()->username]);
 
-
-
     }
 }

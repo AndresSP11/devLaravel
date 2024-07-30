@@ -42,15 +42,18 @@ Route::get('/{user:username}',[PostController::class,'index'])->name('posts.inde
 Route::get('/posts/create',[PostController::class,'create'])->name('posts.create');
 
 Route::post('/posts',[PostController::class,'store'])->name('posts.store');
-/* Por defecto aqui detecta que ese post se tomará el id,  */
+/* Por defecto aqui detecta que ese post se tomará el id,  */                                                                                                                                           
 Route::get('/{user:username}/posts/{post}',[PostController::class,'show'])->name('posts.show');
 
-Route::delete('/posts/{post}',[[PostController::class,'destroy']])->name('posts.destroy');
+
+/* Aqui es la parte del Delete , para eliminar una publicaciòn */
+
+Route::delete('/posts/{post}',[PostController::class,'destroy'])->name('posts.destroy');
 /*  */
 
 Route::post('/{user:username}/posts/{post}',[ComentarioController::class,'store'])->name('comentarios.store');
 /* La parte de la Imagen Controller */
 
-
+/* Aqui se esta enviando a la imagnes */
 
 Route::post('/imagenes',[ImagenController::class,'store'])->name('imagenes.store');

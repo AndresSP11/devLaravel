@@ -58,6 +58,7 @@
                 </div>
                 {{-- AQUI ESTA EL INPUT --}}
                 <div class=" mb-5">
+                    {{-- Aqui es donde ese agrega --}}
                     <input
                         name="imagen"
                         type="hidden"
@@ -68,7 +69,8 @@
                  </div>
                  
                 <input type="submit" class=" bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase
-                 font-bold w-full p-3 text-white rounded-lg" value="Crear Publicación">                 
+                 font-bold w-full p-3 text-white rounded-lg" value="Crear Publicación">          
+
             </form>
         </div>
     </div>
