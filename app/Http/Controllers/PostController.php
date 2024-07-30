@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
@@ -94,14 +95,22 @@ class PostController extends Controller
 
     /*  */
     public function destroy(Post $post)
-    {   
+    {    
         /* if($post->user_id===auth()->user()->id){
             
         } */
-       
-       $this->authorize('delete',$post);
-
+        /* En esta parte se va brindar la autorizaciòn del codigo, en base a lo escrito y determinado
+        por la parte de destroy */
+        /* dd($post); */
+        /* Aqui estas indicando la autorizaciòn, tambièn la parte del post, o el Requiere no que estabamos mandando */
+        $this->authorize('delete',$post);
         $post->delete();
+        /* Haciendo referencia a la dirección del post */
+        $imagen_path=public_path('uploads/'.$post->imagen);
+        if(File::exists($imagen_path)){
+            unlink($imagen_path);
+        }
+
         /* Mandando la parte del usuario */
         return redirect()->route('posts.index',auth()->user()->username); 
     }

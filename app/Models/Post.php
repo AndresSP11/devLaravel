@@ -29,4 +29,13 @@ class Post extends Model
         /*  1 post puede tener M muchos Comentarios */
         return $this->hasMany(Comentario::class);
     }
+
+    public function likes(){
+        return $this->hasMany(Like::class);
+    }
+
+    public function checkLike(User $user){
+        /* eSTA TABLA DE LIKES, CONTEIEN EN LA COLUMNA DE USER ID , CONTIENE ESTE USUARIO DE ESTE pOST */
+        return $this->likes->contains('user_id',$user->id);
+    }
 }

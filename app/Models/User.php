@@ -51,7 +51,9 @@ class User extends Authenticatable
         /* En caso cuando no lo detecte se tiene uqe identificar en parte de las migraciones definidas  */
         return $this->hasMany(Post::class); /* autor_id, para que tenga referencia de lo que se va a realizar allí */    
     }
-
+    public function likes(){
+        return $this->hasMany(Like::class);
+    }
 
 
 }
