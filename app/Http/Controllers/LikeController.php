@@ -17,7 +17,7 @@ class LikeController extends Controller
     }
 
     public function destroy(Request $request,Post $post){
-        
+        /* Recordar que el Reques tambien puede tomar los datos del usaurio registrado */
         /* En el post en el que me encuentro */
         $request->user()->likes()->where('post_id',$post->id)->delete();
         return back();

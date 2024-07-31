@@ -5,6 +5,7 @@ use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,13 @@ Route::post('/login',[LoginController::class,'store']);
 Route::post('/logout',[LogoutController::class,'store'])->name('logout');
 
 
+//Rutas para el Perfil
+
+Route::get('/editar-perfil',[PerfilController::class,'index'])->name('perfil.index');
+
+Route::post('/editar-perfil',[PerfilController::class,'store'])->name('perfil.store');
+
+Route::post('/posts',[PostController::class,'store'])->name('posts.store');
 /* Para que pase a la parte de /muro tener en cuenta que va pasar por el metodo get que es el constructor, osea el index */
 /* Dentro de las llaves van objetos en base al Modelo planteado en los Modelos anteriores. */
 /* En este caso recordar a la funciòn que apunta desde el controlador estarà esperando una forma de que 
@@ -42,7 +50,7 @@ Route::get('/{user:username}',[PostController::class,'index'])->name('posts.inde
 
 Route::get('/posts/create',[PostController::class,'create'])->name('posts.create');
 
-Route::post('/posts',[PostController::class,'store'])->name('posts.store');
+
 /* Por defecto aqui detecta que ese post se tomará el id,  */                                                                                                                                           
 Route::get('/{user:username}/posts/{post}',[PostController::class,'show'])->name('posts.show');
 
@@ -65,3 +73,4 @@ Route::post('/posts/{post}/likes',[LikeController::class,'store'])->name('posts.
 
 //Eliminación de un Registro
 Route::delete('/posts/{post}/likes',[LikeController::class,'destroy'])->name('posts.likes.destroy');
+
