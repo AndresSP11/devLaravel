@@ -31,6 +31,8 @@ class Post extends Model
     }
 
     public function likes(){
+        /* Recordar que un Postp uede tenre muchos likes, en este caso va presentar la parte 
+        de esto */
         return $this->hasMany(Like::class);
     }
 
