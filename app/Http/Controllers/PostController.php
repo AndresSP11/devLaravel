@@ -20,7 +20,7 @@ class PostController extends Controller
         /* La palabra except es para mostrar algunso sin necesidad de tener el middlewaare */
         $this->middleware('auth')->except(['show','index']);
     }
-    
+    /* Aqui se pasa la variable */
     /* Router build moding */
     public function index(User $user)
     {

@@ -36,7 +36,7 @@ Route::post('/logout',[LogoutController::class,'store'])->name('logout');
 
 
 //Rutas para el Perfil
-
+/* Ruteando para la parte de PerfilController */
 Route::get('/editar-perfil',[PerfilController::class,'index'])->name('perfil.index');
 
 Route::post('/editar-perfil',[PerfilController::class,'store'])->name('perfil.store');
@@ -46,6 +46,7 @@ Route::post('/posts',[PostController::class,'store'])->name('posts.store');
 /* Dentro de las llaves van objetos en base al Modelo planteado en los Modelos anteriores. */
 /* En este caso recordar a la funciòn que apunta desde el controlador estarà esperando una forma de que 
 se le pase el modelo a la funciòn determinada */
+/* Mandando la variable de user:Username , es necesario madnar la variable para indefntifcar al usuario */
 Route::get('/{user:username}',[PostController::class,'index'])->name('posts.index');
 
 Route::get('/posts/create',[PostController::class,'create'])->name('posts.create');

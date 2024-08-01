@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Intevention\Image\Facades\Image;
 /* Es la que se ha utilizado la Interventión Image */
+
+
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 

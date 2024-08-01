@@ -7,8 +7,8 @@
 @section('contenido')
     <div class="flex justify-center">
         <div class="w-full md:w-8/12 lg:w-6/12 flex flex-col md:flex-row items-center">
-            <div class="w-8/12 lg:w-6/12 p-5">
-                <img src="{{asset('img/usuario.svg')}}" alt="imagen usuario">
+            <div class="w-8/12 lg:w-6/12 p-5 rounded-3xl">
+                <img src="{{ $user->imagen ? asset('perfiles'.'/'.$user->imagen) : asset('img/usuario.svg')}}" alt="imagen usuario" class=" rounded-full shadow-lg shadow-blue-300">
             </div>
             <div class="md:w-8/12 lg:w-6/12 items-center md:items-start p-5 md:flex md:flex-col md:justify-center">
                 <!-- En esta parte identifica la pate de la autorizaciòn  -->
@@ -37,7 +37,7 @@
                     <span class="font-normal">Siguiendo</span>
                 </p>
                 <p class="text-gray-800 text-sm mb-3 font-bold">
-                    0
+                    {{ $user->posts->count()}}
                     <span class="font-normal">Posts</span>
                 </p>
             </div>
