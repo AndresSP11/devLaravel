@@ -38,6 +38,8 @@ class Post extends Model
 
     public function checkLike(User $user){
         /* eSTA TABLA DE LIKES, CONTEIEN EN LA COLUMNA DE USER ID , CONTIENE ESTE USUARIO DE ESTE pOST */
+        /* Verificados si es que tiene o no en la tabla. */
+        /* Verifica si le ha dado like al post o no */
         return $this->likes->contains('user_id',$user->id);
     }
 }

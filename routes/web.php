@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ComentarioController;
+use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LoginController;
@@ -47,7 +48,6 @@ Route::post('/posts',[PostController::class,'store'])->name('posts.store');
 /* En este caso recordar a la funciòn que apunta desde el controlador estarà esperando una forma de que 
 se le pase el modelo a la funciòn determinada */
 /* Mandando la variable de user:Username , es necesario madnar la variable para indefntifcar al usuario */
-Route::get('/{user:username}',[PostController::class,'index'])->name('posts.index');
 
 Route::get('/posts/create',[PostController::class,'create'])->name('posts.create');
 
@@ -75,3 +75,9 @@ Route::post('/posts/{post}/likes',[LikeController::class,'store'])->name('posts.
 //Eliminación de un Registro
 Route::delete('/posts/{post}/likes',[LikeController::class,'destroy'])->name('posts.likes.destroy');
 
+Route::get('/{user:username}',[PostController::class,'index'])->name('posts.index');
+
+//Siguiendo a Usuarios
+
+Route::post('/{user:username}/follow',[FollowerController::class,'store'])->name('users.follow');
+Route::delete('/{user:username}/unfollow',[FollowerController::class,'destroy'])->name('users.unfollow');
