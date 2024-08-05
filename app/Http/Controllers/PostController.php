@@ -30,7 +30,8 @@ class PostController extends Controller
         es por ello que para que muestre la parte del get se tien que tener en cuenta esto */
 
         /* Haciendo uso de la palabra clave Where en la parte de la Interfaz */
-
+        /* Obtenciòn de todo los post, y creando la paginaciòn recordar que esa paginaciòn necesita una 
+        estructura como tambièn se puede cambiar el diseño */
         $posts=Post::where('user_id',$user->id)->paginate(20);
 
         /* Pasando las varaibles de sesión iniciada en la parte del Muro de la */

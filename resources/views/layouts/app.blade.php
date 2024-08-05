@@ -17,9 +17,9 @@
 
         <div class="container mx-auto flex justify-between items-center">
             
-            <h1 class=" text-3xl font-black">
+            <a href="{{ route('home')}}" class=" text-3xl font-black">
                 DevStagram
-            </h1>
+            </a>
 
             @if (auth()->user())
                 <nav class=" flex items-center gap-2">
@@ -33,7 +33,7 @@
                         Crear
                     </a>
 
-                    <a href="{{route('login')}}" class=" font-bold text-gray-600 hover:text-indigo-600 text-sm items-center">
+                    <a href="{{route('posts.index',auth()->user()->username)}}" class=" font-bold text-gray-600 hover:text-indigo-600 text-sm items-center">
                     Hola: <span class=" font-normal">{{ auth()->user()->username }}</span>
                     </a>
                     {{-- Se ha creado una parte de un formulario en la parte de post, y luego el ruteo necesario, el button submit indica para 

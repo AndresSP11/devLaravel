@@ -60,8 +60,9 @@ class User extends Authenticatable
     /* El metodo followers, en la tabl de followers pertenece a muchos usuarios */
 
     public function followers(){
-        /* Este usuario va insertar, user_id es la persona que esasmos visitando y follower_id es la persona que le dará click
-        a la parte de almacenar */
+        /* Este usuario va insertar, user_id es la persona que estasmos visitando y follower_id es la persona que le dará click
+        a la parte de almacenar, POR SI NO ENTIENDE
+        osea si yo le doy click a seguir  el user_id es la del que se logeo*/
         return $this->belongsToMany(User::class, 'followers','user_id','follower_id');
     }
 
