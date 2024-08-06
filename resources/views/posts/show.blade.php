@@ -11,6 +11,20 @@
             
             <div class=" p-3 flex items-center gap-4">
                 @auth
+
+                {{-- Aqui también se puede ejecutar comandos de la parte de PHP haciendo uso de esa etiquetea @php
+                    
+                @endphp --}}
+
+                @php
+                    $mensaje="Enviando desde etiqueta php"
+                @endphp
+
+
+                {{-- AQUI SE HACE LLAMADO DE LIVEWIRE --}}
+                <livewire:like-post :mensaje="$mensaje"  />
+
+
                 @if ($post->checkLike(auth()->user()))
                     <form action="{{route('posts.likes.destroy' ,$post)}}" method="POST">
                         @method('DELETE')
@@ -44,6 +58,7 @@
                 
             </div>
         
+            {{-- En este caso --}}
             <div>
                 <p class=" font-bold">{{$post->user->username}}</p>
 
