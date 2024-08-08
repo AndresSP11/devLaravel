@@ -11,14 +11,10 @@
             
             <div class=" p-3 flex items-center gap-4">
 
-
-
                 @auth
                 {{-- Aqui también se puede ejecutar comandos de la parte de PHP haciendo uso de esa etiquetea @php
                 @endphp --}}
-                @php
-                    $mensaje="Enviando desde etiqueta php"
-                @endphp
+                
                 {{-- AQUI SE HACE LLAMADO DE LIVEWIRE --}}
                 <livewire:like-post :post="$post"  />
                 
@@ -49,10 +45,7 @@
                 @endif --}}
                  
                 @endauth
-                <p class="">{{ $post->likes->count() }}
-                    <span>Likes</span></p>
-           
-                
+                    
             </div>
         
             {{-- En este caso --}}
