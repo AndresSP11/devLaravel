@@ -13,7 +13,12 @@ class LikePost extends Component
 
 
     public function mount($post){
+        /* Digamos que aqui se define las variables en esete caso para mostrar los valores iniciales correspondientes
+         */
+        /* Verificamos para solo pintarlo si esta funcionando o no correctamente */
         $this->isLiked=$post->checkLike(auth()->user());
+        /* En este caso Verificamos la cantidad para definir el valor correspondiente INICILA, lo que haremos con el controlador sera la suma
+        o resta necesaria en este caso */
         $this->likes=$post->likes->count();
     }
     /* Aqui se recibe automaticamente la funciòn de like por parte de la carpeta livewire, en este caso en react
